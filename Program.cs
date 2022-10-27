@@ -29,16 +29,14 @@ public class Program
             new MoneyType() { Value = 0.01m, Name = "One Cent", Type = "Coin" }
         };
 
-        Console.WriteLine(list.Where(x => x.Name == "Twenty Dollar").Select(x => x.Count).ToString);
-
-        foreach(var i in list)
+        foreach(var v in list)
         {
-            if(value_temp >= i.Value)
+            if(value_temp >= v.Value)
             {
                 // Math.Floor does not round up, which is what's needed
-                int division_result = Convert.ToInt32(Math.Floor(value_temp / i.Value));
-                i.Count += division_result;
-                value_temp %= i.Value;
+                int division_result = Convert.ToInt32(Math.Floor(value_temp / v.Value));
+                v.Count += division_result;
+                value_temp %= v.Value;
             }
         }
 
